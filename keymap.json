@@ -6,16 +6,45 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
+  // Vim mode enhancements
   {
-    "context": "Workspace",
+    "context": "vim_mode == insert",
     "bindings": {
-      "shift shift": "file_finder::Toggle"
+      "j k": "vim::NormalBefore" // jk to escape insert mode
     }
   },
   {
-    "context": "Editor && vim_mode == insert",
+    "context": "vim_mode == normal && !menu",
     "bindings": {
-      "j k": "vim::NormalBefore"
+      "space f": "file_finder::Toggle",
+      "space e": "project_panel::ToggleFocus",
+      "space b": "tab_switcher::Toggle",
+      "space /": "workspace::NewSearch",
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "space c a": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  // Project panel navigation
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
     }
   }
 ]
