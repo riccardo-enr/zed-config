@@ -6,11 +6,38 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
+  // Standard editor keybindings (work in all modes)
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-shift-s": "workspace::SaveAll",
+      "ctrl-f": "buffer_search::Deploy",
+      "ctrl-shift-f": "workspace::NewSearch",
+      "ctrl-/": "editor::ToggleComments",
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-shift-p": "command_palette::Toggle",
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-`": "terminal_panel::ToggleFocus"
+    }
+  },
+
+  // Copy/paste/cut (if you want standard behavior)
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-c": "editor::Copy",
+      "ctrl-v": "editor::Paste",
+      "ctrl-x": "editor::Cut"
+    }
+  },
+
   // Vim mode enhancements
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "j k": "vim::NormalBefore" // jk to escape insert mode
+      "j k": "vim::NormalBefore"
     }
   },
   {
@@ -22,18 +49,21 @@
       "space /": "workspace::NewSearch",
       "g d": "editor::GoToDefinition",
       "g r": "editor::FindAllReferences",
-      "space c a": "editor::ToggleCodeActions"
+      "space c a": "editor::ToggleCodeActions",
+      "space x": "diagnostics::Deploy"
     }
   },
+
+  // Pane navigation (works in all contexts)
   {
     "context": "VimControl && !menu",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
+      "ctrl-k": "workspace::ActivatePaneUp"
     }
   },
+
   // Project panel navigation
   {
     "context": "ProjectPanel && not_editing",
