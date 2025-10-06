@@ -76,5 +76,61 @@
       "c": "project_panel::Copy",
       "p": "project_panel::Paste"
     }
+  },
+
+  // Dock/Panel toggles (work in all modes)
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleLeftDock", // Toggle project panel
+      "ctrl-j": "workspace::ToggleBottomDock", // Toggle terminal/bottom panel
+      "ctrl-\\": "workspace::ToggleRightDock", // Toggle right panel (outline, diagnostics)
+      "ctrl-shift-e": "project_panel::ToggleFocus", // Focus project panel
+      "ctrl-`": "terminal_panel::ToggleFocus" // Focus terminal
+    }
+  },
+
+  // Vim normal mode toggles (space leader)
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space e": "project_panel::ToggleFocus", // Toggle project panel focus
+      "space t": "terminal_panel::ToggleFocus", // Toggle terminal focus
+      "space o": "outline_panel::ToggleFocus", // Toggle outline panel
+      "space d": "diagnostics::Deploy" // Open diagnostics
+    }
+  },
+
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem"
+    }
+  },
+
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space w": "pane::CloseActiveItem",
+      "space q": "pane::CloseActiveItem"
+    }
+  },
+
+  // Terminal-specific toggle
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock", // Close terminal when focused
+      "ctrl-j": "workspace::ToggleBottomDock" // Same, alternate binding
+    }
+  },
+
+  // Project panel toggle from within panel
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock"
+    }
   }
 ]
