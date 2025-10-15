@@ -132,5 +132,16 @@
       "ctrl-b": "workspace::ToggleLeftDock",
       "space e": "workspace::ToggleLeftDock"
     }
+  },
+
+  // Tasks
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-g": [
+        "task::Spawn",
+        { "task_name": "start lazygit", "reveal_target": "center" }
+      ]
+    }
   }
 ]
